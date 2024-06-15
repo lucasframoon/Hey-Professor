@@ -32,7 +32,7 @@ it('should be able to unlike a question', function () {
     $question = Question::factory()->create();
 
     // Act
-    post(route('question.like', $question->id))
+    post(route('question.unlike', $question->id))
         ->assertRedirect();
 
     // Assert
