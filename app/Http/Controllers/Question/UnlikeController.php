@@ -3,19 +3,17 @@
 namespace App\Http\Controllers\Question;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Question, Vote};
+use App\Models\User;
+use App\Models\{Question};
 use Illuminate\Http\RedirectResponse;
 
 class UnlikeController extends Controller
 {
     public function __invoke(Question $question): RedirectResponse
     {
-        Vote::query()->create([
-            'question_id' => $question->id,
-            'user_id'     => auth()->id(),
-            'like'        => 0,
-            'unlike'      => 1,
-        ]);
+        /** @var User $user */
+        $user = auth()->user();
+        $user->unlike($question);
 
         return back();
     }
