@@ -5,8 +5,10 @@ parameters:
         - app/
 
     level: 6
-#    ignoreErrors:
-#        - '#PHPDoc tag @var#'
+
+    ignoreErrors:
+            -
+                    identifier: missingType.generics
 #
 #    excludePaths:
 #        - ./*/*/FileToBeExcluded.php
